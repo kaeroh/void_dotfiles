@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bemenu-run -W 0.4 -H 30 -c --fn Crimson 15 --nb "#2f2925aa" --ab "#2f2925aa" --fb "#2f2925ff" --hb "#6e6864ff" --nf "#dfddd6ff" --af "#dfddd6ff" --ff "#dfddd6ff" --bdr "#b0957eff" --fixed-height
+
