@@ -44,6 +44,6 @@
 
 font-family = Libertinus Mono
 font-size = 13.0
-theme = "/home/sydney/.config/ghostty/themes/syd"
+theme = "/home/sydney/.config/ghostty/themes/temperate"
 
-background-opacity = 0.90
+background-opacity = 0.85

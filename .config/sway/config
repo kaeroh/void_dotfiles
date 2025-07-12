@@ -23,13 +23,13 @@ set $menu bemenu-config
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-set $wallpaper "/home/sydney/Pictures/wallpaper/green_leaves_hald-clut.jpg"
+set $wallpaper "~/Pictures/wallpaper/green_leaves_hald-clut.jpg"
 output "LG Electronics LG ULTRAGEAR 307MXPH3B832" pos 0 0 res 2560x1440 bg $wallpaper fill
 output "ViewSonic Corporation XG2405 VYE202400166" pos -1080 50 mode 1080x1920@144Hz bg $wallpaper fill transform 270 adaptive_sync on
 
 gaps inner 15
 blur_radius 1
-blur_passes 2
+blur_passes 3
 blur true
 
 default_border pixel 2
