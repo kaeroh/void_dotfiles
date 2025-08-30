@@ -1,0 +1,5 @@
+#!/bin/sh
+
+file=$(fd .md ~/index -p -t f | sort | bemenu -i) || exit 0
+
+nvwindow $file

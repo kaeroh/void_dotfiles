@@ -315,84 +315,10 @@ require('lazy').setup({
   },
 
   {
-    'epwalsh/obsidian.nvim',
-    version = '*', -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = 'markdown',
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    --   -- refer to `:h file-pattern` for more examples
-    --   "BufReadPre path/to/my-vault/*.md",
-    --   "BufNewFile path/to/my-vault/*.md",
-    -- },
-    dependencies = {
-      -- Required.
-      'nvim-lua/plenary.nvim',
-
-      -- see below for full list of optional dependencies 👇
-    },
+    'tadmccorkle/markdown.nvim',
+    ft = 'markdown', -- or 'event = "VeryLazy"'
     opts = {
-      workspaces = {
-        {
-          name = 'org',
-          path = '~/org',
-        },
-      },
-      -- see below for full list of options 👇
-      ui = {
-        enable = false,
-      },
-
-      -- so the id of notes doesn't turn into unreadable bullshit
-      note_id_func = function(title)
-        return title
-      end,
-
-      daily_notes = {
-        -- Optional, if you keep daily notes in a separate directory.
-        folder = 'Periodic/daily',
-        -- Optional, if you want to change the date format for the ID of daily notes.
-        date_format = '%d-%m-%Y',
-        -- Optional, if you want to change the date format of the default alias of daily notes.
-        alias_format = '%B %-d, %Y',
-        -- Optional, default tags to add to each new daily note created.
-        default_tags = { 'task' },
-        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-        template = nil,
-      },
-
-      callout = {
-        note = { raw = '[!NOTE]', rendered = '󰋽 Note', highlight = 'RenderMarkdownInfo', category = 'github' },
-        tip = { raw = '[!TIP]', rendered = '󰌶 Tip', highlight = 'RenderMarkdownSuccess', category = 'github' },
-        important = { raw = '[!IMPORTANT]', rendered = '󰅾 Important', highlight = 'RenderMarkdownHint', category = 'github' },
-        warning = { raw = '[!WARNING]', rendered = '󰀪 Warning', highlight = 'RenderMarkdownWarn', category = 'github' },
-        caution = { raw = '[!CAUTION]', rendered = '󰳦 Caution', highlight = 'RenderMarkdownError', category = 'github' },
-        -- Obsidian: https://help.obsidian.md/Editing+and+formatting/Callouts
-        abstract = { raw = '[!ABSTRACT]', rendered = '󰨸 Abstract', highlight = 'RenderMarkdownInfo', category = 'obsidian' },
-        summary = { raw = '[!SUMMARY]', rendered = '󰨸 Summary', highlight = 'RenderMarkdownInfo', category = 'obsidian' },
-        tldr = { raw = '[!TLDR]', rendered = '󰨸 Tldr', highlight = 'RenderMarkdownInfo', category = 'obsidian' },
-        info = { raw = '[!INFO]', rendered = '󰋽 Info', highlight = 'RenderMarkdownInfo', category = 'obsidian' },
-        todo = { raw = '[!TODO]', rendered = '󰗡 Todo', highlight = 'RenderMarkdownInfo', category = 'obsidian' },
-        hint = { raw = '[!HINT]', rendered = '󰌶 Hint', highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-        success = { raw = '[!SUCCESS]', rendered = '󰄬 Success', highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-        check = { raw = '[!CHECK]', rendered = '󰄬 Check', highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-        done = { raw = '[!DONE]', rendered = '󰄬 Done', highlight = 'RenderMarkdownSuccess', category = 'obsidian' },
-        question = { raw = '[!QUESTION]', rendered = '󰘥 Question', highlight = 'RenderMarkdownWarn', category = 'obsidian' },
-        help = { raw = '[!HELP]', rendered = '󰘥 Help', highlight = 'RenderMarkdownWarn', category = 'obsidian' },
-        faq = { raw = '[!FAQ]', rendered = '󰘥 Faq', highlight = 'RenderMarkdownWarn', category = 'obsidian' },
-        attention = { raw = '[!ATTENTION]', rendered = '󰀪 Attention', highlight = 'RenderMarkdownWarn', category = 'obsidian' },
-        failure = { raw = '[!FAILURE]', rendered = '󰅖 Failure', highlight = 'RenderMarkdownError', category = 'obsidian' },
-        fail = { raw = '[!FAIL]', rendered = '󰅖 Fail', highlight = 'RenderMarkdownError', category = 'obsidian' },
-        missing = { raw = '[!MISSING]', rendered = '󰅖 Missing', highlight = 'RenderMarkdownError', category = 'obsidian' },
-        danger = { raw = '[!DANGER]', rendered = '󱐌 Danger', highlight = 'RenderMarkdownError', category = 'obsidian' },
-        error = { raw = '[!ERROR]', rendered = '󱐌 Error', highlight = 'RenderMarkdownError', category = 'obsidian' },
-        bug = { raw = '[!BUG]', rendered = '󰨰 Bug', highlight = 'RenderMarkdownError', category = 'obsidian' },
-        example = { raw = '[!EXAMPLE]', rendered = '󰉹 Example', highlight = 'RenderMarkdownHint', category = 'obsidian' },
-        quote = { raw = '[!QUOTE]', rendered = '󱆨 ', highlight = 'RenderMarkdownQuote', category = 'obsidian' },
-        cite = { raw = '[!CITE]', rendered = '󱆨 Cite', highlight = 'RenderMarkdownQuote', category = 'obsidian' },
-      },
+      -- configuration here or empty for defaults
     },
   },
 
@@ -1177,8 +1103,10 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    lazy = false,
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust', 'zig' },

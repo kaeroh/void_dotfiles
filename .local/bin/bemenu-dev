@@ -1,0 +1,5 @@
+#!/bin/sh
+
+folder=$(eza -1 ~/dev | sort | bemenu -i) || exit 0
+nvwindow "/home/sydney/dev/${folder}"
+

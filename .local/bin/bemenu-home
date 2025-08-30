@@ -1,0 +1,7 @@
+#!/bin/sh
+
+prog=$(bemenu-run --no-exec) || exit 0
+dir=$(eza -1 -a ~/ | sort | bemenu -i) || exit 0
+
+$prog "/home/sydney/${dir}"
+

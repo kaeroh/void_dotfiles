@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ghostty --working-directory=$1 -e nvim $1 &
+
