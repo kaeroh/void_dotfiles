@@ -22,9 +22,12 @@ vim.pack.add({
 		src="https://github.com/ThePrimeagen/harpoon",
 		version = "harpoon2"
 	},
-	{src="https://github.com/nvim-mini/mini.completion"},
 	{src="https://github.com/stevearc/oil.nvim"},
 	{src="https://github.com/ej-shafran/compile-mode.nvim"},
+	{src="https://github.com/L3MON4D3/LuaSnip"},
+	{src="https://github.com/hrsh7th/cmp-path"},
+	{src="https://github.com/hrsh7th/cmp-nvim-lsp"},
+	{src="https://github.com/hrsh7th/nvim-cmp"},
 })
 
 require("nvim-treesitter.configs").setup {
@@ -36,6 +39,37 @@ require "mason".setup()
 require "oil".setup()
 require "nvim-autopairs".setup()
 require "mini.pick".setup()
+local luasnip = require "luasnip"
+luasnip.config.setup {}
+local cmp = require"cmp"
+cmp.setup()
+
+cmp.setup {
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+	completion = { completeopt = 'menu,menuone,noinsert' },
+	mapping = cmp.mapping.preset.insert {
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		['<C-p>'] = cmp.mapping.select_prev_item(),
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<Tab>'] = cmp.mapping.confirm { select = true },
+		['<C-Space>'] = cmp.mapping.complete {},
+	},
+	sources = {
+		{
+			name = 'lazydev',
+			group_index = 0,
+		},
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
+		{ name = 'path' },
+		{ name = 'nvim_lsp_signature_help' },
+	},
+}
 
 vim.g.compile_mode = {}
 
