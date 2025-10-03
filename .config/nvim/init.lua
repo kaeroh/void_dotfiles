@@ -28,6 +28,8 @@ vim.pack.add({
 	{src="https://github.com/hrsh7th/cmp-path"},
 	{src="https://github.com/hrsh7th/cmp-nvim-lsp"},
 	{src="https://github.com/hrsh7th/nvim-cmp"},
+	{src="https://github.com/MeanderingProgrammer/render-markdown.nvim"},
+	{src="https://github.com/chomosuke/typst-preview.nvim"},
 })
 
 require("nvim-treesitter.configs").setup {
@@ -39,6 +41,8 @@ require "mason".setup()
 require "oil".setup()
 require "nvim-autopairs".setup()
 require "mini.pick".setup()
+require "render-markdown".setup()
+require "typst-preview".setup()
 local luasnip = require "luasnip"
 luasnip.config.setup {}
 local cmp = require"cmp"
@@ -99,8 +103,8 @@ require('base16-colorscheme').setup {
 vim.keymap.set("n", "<C-c>", ":vert:Compile ")
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set("n", "<leader>f", ":Pick files<CR>")
-vim.keymap.set("n", "<leader>g", ":Pick grep_live<CR>")
+vim.keymap.set("n", "<C-f>", ":Pick files<CR>")
+vim.keymap.set("n", "<S-g>", ":Pick grep_live<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
@@ -114,10 +118,24 @@ vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
 vim.keymap.set("n", "<C-k>", ":lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gr", vim.lsp.buf.references)
 
-vim.lsp.enable({ "lua_ls", "clangd", "marksman" })
+vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist" })
 vim.diagnostic.enable = true;
 vim.diagnostic.config({
 	virtual_text = false
 })
 
+vim.api.nvim_create_user_command("OpenPdf", function()
+
+    local filepath = vim.api.nvim_buf_get_name(0)
+
+    if filepath:match("%.typ$") then
+
+        local pdf_path = filepath:gsub("%.typ$", ".pdf")
+
+        vim.system({ "zathura", pdf_path })
+
+    end
+
+end, {})
