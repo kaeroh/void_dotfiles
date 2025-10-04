@@ -5,6 +5,8 @@ vim.o.shiftwidth = 4
 vim.o.swapfile = false
 vim.o.wrap = true
 vim.o.winborder = "rounded"
+vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.g.mapleader = " "
 
 vim.pack.add({
@@ -38,7 +40,8 @@ require("nvim-treesitter.configs").setup {
 
 require("wrapping").setup()
 require "mason".setup()
-require "oil".setup()
+require "oil".setup ({
+})
 require "nvim-autopairs".setup()
 require "mini.pick".setup()
 require "render-markdown".setup()
@@ -119,6 +122,8 @@ vim.keymap.set("n", "<C-k>", ":lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
+
+vim.keymap.set("n", "<leader>f", ":Oil<CR>");
 
 vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist" })
 vim.diagnostic.enable = true;
