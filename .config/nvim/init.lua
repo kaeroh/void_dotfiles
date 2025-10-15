@@ -1,12 +1,14 @@
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.tabstop = 4
+vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.swapfile = false
 vim.o.wrap = true
 vim.o.winborder = "rounded"
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.textwidth = 80
 vim.g.mapleader = " "
 
 vim.pack.add({
@@ -88,7 +90,7 @@ require('base16-colorscheme').setup {
 	base00 = '#2f2925',
 	base01 = '#534c4c', -- 10100e
 	base02 = '#4f4a43',
-	base03 = '#aea59e', -- 6c7891
+	base03 = '#7b6f67', -- 6c7891
 	base04 = '#565c64',
 	base05 = '#bea0bd',
 	base06 = '#d1d073',
@@ -107,7 +109,7 @@ vim.keymap.set("n", "<C-c>", ":vert:Compile ")
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set("n", "<C-f>", ":Pick files<CR>")
-vim.keymap.set("n", "<S-g>", ":Pick grep_live<CR>")
+vim.keymap.set("n", "<C-g>", ":Pick grep_live<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
@@ -122,10 +124,11 @@ vim.keymap.set("n", "<C-k>", ":lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
+vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
 vim.keymap.set("n", "<leader>f", ":Oil<CR>");
 
-vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist" })
+vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls" })
 vim.diagnostic.enable = true;
 vim.diagnostic.config({
 	virtual_text = false
@@ -144,3 +147,4 @@ vim.api.nvim_create_user_command("OpenPdf", function()
     end
 
 end, {})
+
