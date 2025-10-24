@@ -37,7 +37,7 @@ vim.pack.add({
 })
 
 require("nvim-treesitter.configs").setup {
-	ensure_installed = { "c", "lua", "markdown", "nim" },
+	ensure_installed = { "c", "lua", "markdown", "nim", "gdscript" },
 }
 
 require("wrapping").setup()
@@ -86,6 +86,9 @@ vim.g.compile_mode = {}
 local harpoon = require "harpoon".setup()
 harpoon:setup {}
 
+--[[
+
+
 require('base16-colorscheme').setup {
 	base00 = '#2f2925',
 	base01 = '#534c4c', -- 10100e
@@ -103,6 +106,27 @@ require('base16-colorscheme').setup {
 	base0D = '#f17c79', -- b0957e
 	base0E = '#75a9cc',
 	base0F = '#d1d073',
+}
+
+]]--
+
+require('base16-colorscheme').setup {
+	base00 = '#24272b', -- background
+	base01 = '#4e5855',
+	base02 = '#4e5855', -- visual mode highlighting
+	base03 = '#758983', -- 7b6f67
+	base04 = '#758983',
+	base05 = '#ca7978',
+	base06 = '#babc74',
+	base07 = '#b0bcbc', -- foreground text
+	base08 = '#c27c9a',
+	base09 = '#c5ac89',
+	base0A = '#5084b0',
+	base0B = '#81c1a9',
+	base0C = '#7074b0',
+	base0D = '#57a085',
+	base0E = '#81afc1',
+	base0F = '#c18e81',
 }
 
 vim.keymap.set("n", "<C-c>", ":vert:Compile ")
@@ -126,9 +150,29 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
+local function format_paragraph()
+    local original_pos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd('normal! vapgw')
+    vim.api.nvim_win_set_cursor(0, original_pos)
+end
+
+vim.keymap.set("n", "fm", format_paragraph);
+
 vim.keymap.set("n", "<leader>f", ":Oil<CR>");
 
-vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls" })
+vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls", "gdscript" })
+
+vim.lsp.config("lua_ls",
+{
+    settings = {
+        Lua = {
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            }
+        }
+    }
+})
+
 vim.diagnostic.enable = true;
 vim.diagnostic.config({
 	virtual_text = false
