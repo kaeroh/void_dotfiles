@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # something something
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.nimble/bin:$PATH
 export BEMENU_OPTS='--list 16 down -W 0.4 -H 30 -c --fn CrimsonPro 15 --nb "#2f2925ff" --ab "#2f2925ff" --fb "#2f2925ff" --hb "#6e6864ff" --hf "#d18d88ff" --tb "#dfddd6ff" --tf "#2f2925ff" --nf "#dfddd6ff" --af "#dfddd6ff" --ff "#dfddd6ff" --bdr "#b0957eff" --fixed-height'
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -113,7 +114,7 @@ export BR_EDITOR='new_nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="eza --icons -a --group-directories-first -G"
+alias ls="ls -C -t -U -A -p --color=auto"
 alias lt="eza --icons -a --group-directories-first -G --tree"
 alias l="eza -laG"
 eval "$(starship init zsh)"

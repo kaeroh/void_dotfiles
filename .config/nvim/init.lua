@@ -1,8 +1,8 @@
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.tabstop = 4
+vim.o.tabstop = 8
 vim.o.expandtab = true
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 8
 vim.o.swapfile = false
 vim.o.wrap = true
 vim.o.winborder = "rounded"
@@ -37,7 +37,7 @@ vim.pack.add({
 })
 
 require("nvim-treesitter.configs").setup {
-	ensure_installed = { "c", "lua", "markdown", "nim", "gdscript" },
+	ensure_installed = { "c", "lua", "markdown", "nim", "gdscript", "zig" },
 }
 
 require("wrapping").setup()
@@ -88,6 +88,7 @@ harpoon:setup {}
 
 --[[
 
+// temperate
 
 require('base16-colorscheme').setup {
 	base00 = '#2f2925',
@@ -110,24 +111,49 @@ require('base16-colorscheme').setup {
 
 ]]--
 
+
+-- reef turtle
 require('base16-colorscheme').setup {
 	base00 = '#24272b', -- background
-	base01 = '#4e5855',
+	base01 = '#4e5855', -- highlight background selection
 	base02 = '#4e5855', -- visual mode highlighting
 	base03 = '#758983', -- 7b6f67
 	base04 = '#758983',
-	base05 = '#ca7978',
-	base06 = '#babc74',
+	base05 = '#ca7978', -- member variables c5ac89
+	base06 = '#c18e81',
 	base07 = '#b0bcbc', -- foreground text
-	base08 = '#c27c9a',
-	base09 = '#c5ac89',
-	base0A = '#5084b0',
-	base0B = '#81c1a9',
-	base0C = '#7074b0',
-	base0D = '#57a085',
-	base0E = '#81afc1',
-	base0F = '#c18e81',
+	base08 = '#c27c9a', -- interfaces/structs (external)
+	base09 = '#7074b0', -- constants/enums babc74
+	base0A = '#5084b0', -- types and keywords
+	base0B = '#41a1a1', -- strings
+	base0C = '#57a085', -- fuzzy find highlighting
+	base0D = '#b3b36e', -- functions
+	base0E = '#81afc1', -- keywords
+	base0F = '#ca7978',
 }
+
+--[[
+
+-- tundra rat summer
+require('base16-colorscheme').setup {
+	base00 = '#c2beba', -- background
+	base01 = '#dce0e1', -- highlight background selection
+	base02 = '#dce0e1', -- visual mode highlighting
+	base03 = '#939393', -- 7b6f67
+	base04 = '#939393',
+	base05 = '#ad64ad', -- member variables
+	base06 = '#b19333', -- 
+	base07 = '#3a3c44', -- foreground text
+	base08 = '#735b31', -- interfaces, structs (local struct variables), external enums
+	base09 = '#8f8b46', -- constants/enums
+	base0A = '#41a1a1', -- types and keywords 
+	base0B = '#477947', -- strings
+	base0C = '#41a1a1', -- fuzzy find highlighting
+	base0D = '#125a71', -- functions 
+	base0E = '#3f498e', -- keywords
+	base0F = '#ca6361',
+}
+--]]
 
 vim.keymap.set("n", "<C-c>", ":vert:Compile ")
 
@@ -160,7 +186,7 @@ vim.keymap.set("n", "fm", format_paragraph);
 
 vim.keymap.set("n", "<leader>f", ":Oil<CR>");
 
-vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls", "gdscript" })
+vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls", "gdscript", "zls" })
 
 vim.lsp.config("lua_ls",
 {
