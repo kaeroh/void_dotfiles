@@ -34,11 +34,10 @@ vim.pack.add({
 	{src="https://github.com/hrsh7th/nvim-cmp"},
 	{src="https://github.com/MeanderingProgrammer/render-markdown.nvim"},
 	{src="https://github.com/chomosuke/typst-preview.nvim"},
+        {src="https://github.com/c3lang/tree-sitter-c3"},
 })
 
-require("nvim-treesitter.configs").setup {
-	ensure_installed = { "c", "lua", "markdown", "nim", "gdscript", "zig" },
-}
+require("nvim-treesitter").setup { ensure_installed = { "c", "lua", "markdown", "zig", "glsl", "nim" } }
 
 require("wrapping").setup()
 require "mason".setup()
@@ -111,7 +110,7 @@ require('base16-colorscheme').setup {
 
 ]]--
 
-
+--[[
 -- reef turtle
 require('base16-colorscheme').setup {
 	base00 = '#24272b', -- background
@@ -131,6 +130,7 @@ require('base16-colorscheme').setup {
 	base0E = '#81afc1', -- keywords
 	base0F = '#ca7978',
 }
+]]--
 
 --[[
 
@@ -154,6 +154,25 @@ require('base16-colorscheme').setup {
 	base0F = '#ca6361',
 }
 --]]
+
+require('base16-colorscheme').setup {
+        base00 = '#232221', -- background
+	base01 = '#544b40', -- highlight background selection
+	base02 = '#4c6244', -- visual mode highlighting
+	base03 = '#817467', -- 7b6f67
+	base04 = '#d2c881',
+	base05 = '#c2a494', -- member variables c5ac89
+	base06 = '#55b18a',
+	base07 = '#c2acbc', -- foreground text
+	base08 = '#b9865e', -- interfaces/structs (external)
+	base09 = '#cc7aa5', -- constants/enums babc74
+	base0A = '#8483ef', -- types and keywords
+	base0B = '#70bc5c', -- strings
+	base0C = '#dec3d3', -- fuzzy find highlighting
+	base0D = '#d3627d', -- functions
+	base0E = '#81afc1', -- keywords
+	base0F = '#d3a66a',
+}
 
 vim.keymap.set("n", "<C-c>", ":vert:Compile ")
 
@@ -186,7 +205,7 @@ vim.keymap.set("n", "fm", format_paragraph);
 
 vim.keymap.set("n", "<leader>f", ":Oil<CR>");
 
-vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls", "gdscript", "zls" })
+vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls" })
 
 vim.lsp.config("lua_ls",
 {

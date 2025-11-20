@@ -42,8 +42,12 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-font-family = IosevkaTermSlab NF
+#font-family = IosevkaTermSlab NF
+#font-family = Comic Shanns
+#font-family = FiraCode
+font-family = Iosevka NF
 font-size = 14.0
-theme = "/home/sydney/.config/ghostty/themes/reef"
+theme = "/home/sydney/.config/ghostty/themes/perma_ginger"
 
 background-opacity = 1.00
+
