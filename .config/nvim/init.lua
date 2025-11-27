@@ -156,10 +156,10 @@ require('base16-colorscheme').setup {
 --]]
 
 require('base16-colorscheme').setup {
-        base00 = '#232221', -- background
-	base01 = '#544b40', -- highlight background selection
+        base00 = '#2b2420', -- background
+	base01 = '#2b2420', -- highlight background selection 544b40
 	base02 = '#4c6244', -- visual mode highlighting
-	base03 = '#817467', -- 7b6f67
+	base03 = '#817467', -- comments
 	base04 = '#d2c881',
 	base05 = '#c2a494', -- member variables c5ac89
 	base06 = '#55b18a',
