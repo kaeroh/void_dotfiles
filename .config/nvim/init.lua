@@ -35,15 +35,17 @@ vim.pack.add({
 	{src="https://github.com/MeanderingProgrammer/render-markdown.nvim"},
 	{src="https://github.com/chomosuke/typst-preview.nvim"},
         {src="https://github.com/c3lang/tree-sitter-c3"},
+        {src="https://github.com/blazkowolf/gruber-darker.nvim"},
 })
 
-require("nvim-treesitter").setup { ensure_installed = { "c", "lua", "markdown", "zig", "glsl", "nim" } }
+-- require("nvim-treesitter").setup { ensure_installed = { "c", "lua", "markdown", "zig", "glsl", "nim", "odin" } }
 
 require("wrapping").setup()
-require "mason".setup()
+-- require "mason".setup()
 require "oil".setup ({
 })
-require "nvim-autopairs".setup()
+-- experimenting without this for a while
+--require "nvim-autopairs".setup()
 require "mini.pick".setup()
 require "render-markdown".setup()
 require "typst-preview".setup()
@@ -155,9 +157,11 @@ require('base16-colorscheme').setup {
 }
 --]]
 
+--[[
+-- perma
 require('base16-colorscheme').setup {
         base00 = '#2b2420', -- background
-	base01 = '#2b2420', -- highlight background selection 544b40
+	base01 = '#3d3439', -- highlight background selection 544b40
 	base02 = '#4c6244', -- visual mode highlighting
 	base03 = '#817467', -- comments
 	base04 = '#d2c881',
@@ -171,6 +175,27 @@ require('base16-colorscheme').setup {
 	base0C = '#dec3d3', -- fuzzy find highlighting
 	base0D = '#d3627d', -- functions
 	base0E = '#81afc1', -- keywords
+	base0F = '#d3a66a',
+}
+]]--
+
+-- perma darker
+require('base16-colorscheme').setup {
+        base00 = '#2b2420', -- background
+	base01 = '#3d3439', -- highlight background selection 544b40
+	base02 = '#4c6244', -- visual mode highlighting
+	base03 = '#d2c881', -- comments
+	base04 = '#d2c881',
+	base05 = '#c2a494', -- member variables c5ac89
+	base06 = '#55b18a',
+	base07 = '#c2acbc', -- foreground text
+	base08 = '#b9865e', -- interfaces/structs (external)
+	base09 = '#cc7aa5', -- constants/enums babc74
+	base0A = '#817467', -- types and keywords
+	base0B = '#70bc5c', -- strings
+	base0C = '#dec3d3', -- fuzzy find highlighting
+	base0D = '#d3627d', -- functions
+	base0E = '#d3a66a', -- keywords
 	base0F = '#d3a66a',
 }
 
@@ -205,7 +230,7 @@ vim.keymap.set("n", "fm", format_paragraph);
 
 vim.keymap.set("n", "<leader>f", ":Oil<CR>");
 
-vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls" })
+-- vim.lsp.enable({ "lua_ls", "clangd", "marksman", "tinymist", "nimls", "ols" })
 
 vim.lsp.config("lua_ls",
 {
@@ -236,4 +261,6 @@ vim.api.nvim_create_user_command("OpenPdf", function()
     end
 
 end, {})
+
+vim.cmd.colorscheme("gruber-darker")
 

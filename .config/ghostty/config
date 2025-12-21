@@ -45,9 +45,10 @@
 #font-family = IosevkaTermSlab NF
 #font-family = Comic Shanns
 #font-family = FiraCode
-font-family = Iosevka NF
-font-size = 14.0
-theme = "/home/sydney/.config/ghostty/themes/perma_ginger"
+font-family = Monaspace Neon
+font-size = 16.0
+#theme = "/home/sydney/.config/ghostty/themes/perma_ginger"
+theme = /usr/share/ghostty/themes/gruber-darker
 
 background-opacity = 1.00
 

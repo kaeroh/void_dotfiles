@@ -20,6 +20,9 @@ set $term ghostty
 # Your preferred application launcher
 set $menu bemenu-run
 
+# hide mouse cursor after miliseconds
+seat seat0 hide_cursor 1500
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -29,7 +32,7 @@ output "ViewSonic Corporation XG2405 VYE202400166" pos -1080 50 mode 1080x1920@1
 output "eDP-1" pos 0 0 res 1920x1080 bg $wallpaper fill
 output "DP-2" pos 1920 0 res 2560x1440@75Hz bg $wallpaper fill
 
-gaps inner 15
+gaps inner 0
 blur_radius 1
 blur_passes 3
 blur true
@@ -261,7 +264,7 @@ bar {
     height 30
     font CrimsonPro 16
 
-    gaps 15
+    gaps 0
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -269,7 +272,7 @@ bar {
 
     colors {
         statusline #ffffff
-        background #00000000
+        background #2b2420ff
         inactive_workspace #32323200 #32323200 $foreground
         active_workspace $base0F $base07 $base00
         focused_workspace $base0F #5fa072 $base00
