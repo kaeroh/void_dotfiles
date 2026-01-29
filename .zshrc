@@ -4,10 +4,13 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.nimble/bin:$PATH
 export PATH=$HOME/.local/bin/c3:$PATH
 export PATH=$HOME/.local/share/odin:$PATH
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 export BEMENU_OPTS='--list 16 down -W 0.4 -H 30 -c --fn CrimsonPro 15 --nb "#2f2925ff" --ab "#2f2925ff" --fb "#2f2925ff" --hb "#6e6864ff" --hf "#d18d88ff" --tb "#dfddd6ff" --tf "#2f2925ff" --nf "#dfddd6ff" --af "#dfddd6ff" --ff "#dfddd6ff" --bdr "#b0957eff" --fixed-height'
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export GRIM_DEFAULT_DIR="/home/sydney/Pictures/screenshots"
+ 
+export SDL_VIDEODRIVER=wayland
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,

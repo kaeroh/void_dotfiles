@@ -36,9 +36,16 @@ vim.pack.add({
 	{src="https://github.com/chomosuke/typst-preview.nvim"},
         {src="https://github.com/c3lang/tree-sitter-c3"},
         {src="https://github.com/blazkowolf/gruber-darker.nvim"},
+        {src="https://github.com/janet-lang/janet.vim"},
 })
 
 -- require("nvim-treesitter").setup { ensure_installed = { "c", "lua", "markdown", "zig", "glsl", "nim", "odin" } }
+require("nvim-treesitter").setup ({
+        highlight = {
+                enable = true,
+        },
+})
+require("nvim-treesitter").install ({}):wait(300000)
 
 require("wrapping").setup()
 -- require "mason".setup()

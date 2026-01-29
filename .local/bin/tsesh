@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DIRS=(
+	"$HOME/dev"
+	"$HOME/index"
+	"$HOME/index/2-Projects"
+	"$HOME/index/2-Projects/2.1-school_courses"
+	"$HOME/.config"
+    "$HOME"
+)
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(fd . "${DIRS[@]}" --type=dir --max-depth=1 --full-path --base-directory $HOME \
+        | sed "s|^$HOME/||" \
+        | sk --margin 10% --color="bw")
+
+    [[ $selected ]] && selected="$HOME/$selected"
+fi
+
+[[ ! $selected ]] && exit 0
+
+selected_name=$(basename "$selected" | tr . _)
+
+tmux new-session -A -s "$selected_name" -c "$selected"
+
